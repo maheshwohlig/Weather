@@ -1,8 +1,8 @@
 <template>
-  <div id="app">
+  <div id="app" :class="typeof weather.main != 'undefined' && weather.main.temp > 16 ? 'warm' : ''" >
     <v-col cols="12" align="center">
       <v-img
-        src="https://developers.google.com/codelabs/maps-platform/maps-platform-101-js/img/e52623cb8578d625.png"
+        src="https://images.pexels.com/photos/209831/pexels-photo-209831.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
         height="100vh"
       >
         <v-toolbar class="new" dark>
@@ -129,4 +129,7 @@ export default {
 /* .temp{
   font-size: 1vw;
 } */
+#app.warm{
+  background-image: src='http://www.pcctel.net/wp-content/plugins/awesome-weather/img/awe-backgrounds/drizzle.jpg';
+}
 </style>
