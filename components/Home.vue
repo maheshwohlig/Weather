@@ -21,6 +21,8 @@
             <p>{{ weather.name }}, {{ weather.sys.country }}</p>
           </h1>
           <br />
+          <div v-if="weather && weather.main && weather.main.temp">
+           <h1 class="temp" style=font-size:10vw>{{(Math.round(weather.main.temp)-273)+"&deg;C"}}</h1></div>
           <div
             v-if="
               weather &&
@@ -30,7 +32,7 @@
               weather.weather[0].main
             "
           >
-            <p>{{ weather.weather[0].main }}</p>
+            <h4>{{ weather.weather[0].main }}</h4>
           </div>
           <br />
         </div>
@@ -45,7 +47,10 @@ export default {
   data() {
     return {
       city: ' ',
-      weather: {},
+
+      weather: {
+        name:'city',sys:{country: 'country'},weather:[{main:'weather'}],main:{temp:'Temp'}
+      },
     }
   },
   methods: {
@@ -58,37 +63,38 @@ export default {
       console.log('weather', this.weather)
     },
   },
-  dateBuil() {
-    let d = new Date()
-    let months = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December',
-    ]
-    let days = [
-      'Sunday',
-      'Monday',
-      'Tuesday',
-      'Wednesday',
-      'Thursday',
-      'Friday',
-      'Saturday',
-    ]
-    let day = days[d.getDay()]
-    let date = d.getDate()
-    let month = months[d.getMonth()]
-    let year = d.getFullYear()
-    return `${day} ${date} ${month} ${year}`
-  },
+
+  // dateBuil() {
+  //   let d = new Date()
+  //   let months = [
+  //     'January',
+  //     'February',
+  //     'March',
+  //     'April',
+  //     'May',
+  //     'June',
+  //     'July',
+  //     'August',
+  //     'September',
+  //     'October',
+  //     'November',
+  //     'December',
+  //   ]
+  //   let days = [
+  //     'Sunday',
+  //     'Monday',
+  //     'Tuesday',
+  //     'Wednesday',
+  //     'Thursday',
+  //     'Friday',
+  //     'Saturday',
+  //   ]
+  //   let day = days[d.getDay()]
+  //   let date = d.getDate()
+  //   let month = months[d.getMonth()]
+  //   let year = d.getFullYear()
+  //   return `${day} ${date} ${month} ${year}`
+  // },
 }
 </script>
 
@@ -119,5 +125,8 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+} */
+/* .temp{
+  font-size: 1vw;
 } */
 </style>
